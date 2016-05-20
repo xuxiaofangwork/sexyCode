@@ -1,3 +1,18 @@
+/*
+ *  name : sexyCode.css;
+ *  
+ *  detail : my base css for page, slot normalize.css;
+ *
+ *  require : no;
+ *
+ *  date : 2016-05-20 14:14;
+ *
+ *  author : HaoXiaodan(xuxiaofangwork@163.com);
+ * 
+*/
+
+@charset "utf-8";
+
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -665,6 +680,94 @@ textarea[disabled] {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+}
+
+.sexy-multiple {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+
+
+/* sexyCode.js widget style start */
+[sexy-widget="toast"] {
+    display: table;
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    z-index: 101;
+    margin-top: -21px;
+}
+
+[sexy-widget="toast"] span {
+    display: table;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: rgba(0,0,0,.75);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+[sexy-widget="mask"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,.75);
+}
+
+[sexy-widget="popBox"] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 102;
+    max-width: 420px;
+    max-height: 185px;
+    width: 85%;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #fafafc;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%)
+}
+
+[sexy-widget="popBox"] h4 {
+    margin: 0;
+    padding: 10px;
+    font-size: 15px;
+}
+
+[sexy-widget="popBox"] p {
+    padding: 10px;
+    font-size: 14px;
+    color: #888;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+[sexy-widget="popBox"] input {
+    cursor: pointer;
+    width: 100%;
+    background-color: #fafafc;
+    color: #0bb20c;
+    font-size: 15px;
+    padding: 8px 0;
+    border: none;
+    border-top: 1px solid #d5d5d6;
 }
 
 
