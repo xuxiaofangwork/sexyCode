@@ -103,7 +103,8 @@
 
 	// 弹出框，参数为title、content；弹窗的标题和提示内容，类型都为字符串型;
 	// 对mask有依赖;
-	var popBox = function(title, content){
+	// 此方法带有回调函数，且是单次绑定，同一页面中有回调函数只能单次使用;
+	var popBox = function(title, content, callback){
 		if(typeof title !== 'string' || typeof content !== 'string') return;
 		var popBox,
 			isPoped = doc.querySelector("[sexy-widget='popBox']"),
@@ -125,6 +126,7 @@
 				if(e.target === doc.querySelector("[sexy-widget='popBox']>input")){
 					this.style.display = 'none';
 					mask(false);
+					if(callback) callback();
 				}
 			}, false);
 		}
@@ -136,6 +138,7 @@
 		mask: mask,
 		toast: toast,
 		popBox: popBox,
+		version: version,
 		noConflict: noConflict
 	};
 
