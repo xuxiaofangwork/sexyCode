@@ -465,6 +465,7 @@ textarea {
 }
 
 html {
+    -ms-touch-action: none;  /* 阻止windows Phone 的默认触摸事件 */
     -webkit-user-select:none; /* 禁止ios和android用户选中文字 */
     -webkit-tap-highlight-color: transparent;  /* ios下按钮点击会出现一层颜色,此属性用用于定义那个颜色 */
     -webkit-touch-callout: none; /* 禁止ios长按图片时触发系统保存图片的菜单(还有其他提示,仅适用ios) */
