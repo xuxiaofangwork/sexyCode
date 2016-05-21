@@ -503,6 +503,11 @@ p {
     line-height: 1.8;
 }
 
+strong {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 /**
  * Add the correct background and color in IE 9-.
  * 将mark底色做了下修改,ff0修改为d6dbdf;
