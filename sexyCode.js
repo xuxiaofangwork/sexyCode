@@ -31,6 +31,25 @@
 		return this;	//保持链式调用,返回this对象;
 	};
 
+	var setRem = function(){
+		var set = function(){
+			var rate = 320/100,
+				html = doc.querySelector('html'),
+				wid = html.getBoundingClientRect().width;
+
+			wid > 640 && (wid = 640);
+			wid < 320 && (wid = 320);
+			html.style.fontSize = wid/rate + 'px';
+		};
+
+		set();
+
+		win.addEventListener('resize', function(){
+			win.clearTimeout(tim);
+			var tim = win.setTimeout(set ,500);
+		}, 400);
+	}；			
+
 	// 获取url中的参数;
 	var getParams = function(){
 	    var i,
@@ -138,7 +157,8 @@
 		mask: mask,
 		toast: toast,
 		popBox: popBox,
-		version: version,
+		setRem: setRem,
+		version: version, 
 		noConflict: noConflict
 	};
 
