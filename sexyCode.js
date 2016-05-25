@@ -77,7 +77,7 @@
 
 	// 参数为要提示的文本、显示时间; 类型为：字符串、数字;
 	var toast = function(txt, second){
-		if(typeof txt !== 'string' || typeof second !== 'number') return;
+		if(typeof txt !== 'string') return;
 		var tim,
 			toast,
 			inner,
