@@ -31,24 +31,35 @@
 		return this;	//保持链式调用,返回this对象;
 	};
 
+	// 设置 rem 自动调节
 	var setRem = function(){
 		var set = function(){
 			var rate = 320/100,
 				html = doc.querySelector('html'),
-				wid = html.getBoundingClientRect().width;
+				wid = html.getBoundingClientRect().width,
+				iphone = /iphone/ig.test(win.navigator.userAgent),
+				metaStr = "width=device-width,initial-scale=0.5,user-scalable=no";
 
 			wid > 640 && (wid = 640);
 			wid < 320 && (wid = 320);
-			html.style.fontSize = wid/rate + 'px';
+			if(iphone) {
+				doc.querySelector('meta[name="viewport"]').content = metaStr;
+				html.style.fontSize = (wid/rate*2) + 'px';
+			}else{
+				html.style.fontSize = wid/rate + 'px';
+			}			
 		};
 
 		set();
 
-		win.addEventListener('resize', function(){
-			win.clearTimeout(tim);
-			var tim = win.setTimeout(set ,500);
-		}, 400);
-	}；			
+		// 屏幕尺寸重定义 重新设置rem 测试有问题  隐掉  待更新
+		// win.addEventListener('resize', function(){
+		// 	win.clearTimeout(tim);
+		// 	var tim = win.setTimeout(set ,500);
+		// }, false);
+
+		return  this;
+	};			
 
 	// 获取url中的参数;
 	var getParams = function(){
