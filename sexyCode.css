@@ -476,8 +476,8 @@ body {
     max-width: 640px;
     min-width: 320px;
     margin: 0 auto;    /* 消除body默认的外边距&&让页面居中 */
-    font-family: "Helvetica Neue", verdana, "Microsoft YaHei", sans-serif;
-    font-size: .14rem; 
+    font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;
+    font-size: .14rem;
     line-height: 1.5;
     text-align: center;
     color: #444;
