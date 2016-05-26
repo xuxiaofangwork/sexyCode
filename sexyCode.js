@@ -45,6 +45,7 @@
 			if(iphone) {
 				doc.querySelector('meta[name="viewport"]').content = metaStr;
 				html.style.fontSize = (wid/rate*2) + 'px';
+				body.style.cssText = "max-width:1280px;min-width:640px;"
 			}else{
 				html.style.fontSize = wid/rate + 'px';
 			}			
