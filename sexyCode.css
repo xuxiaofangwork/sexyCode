@@ -586,7 +586,11 @@ input[type="button"],
 input[type="submit"] {
     border: 1px solid #ccc;
     border-radius: 3px;
-    padding: .06rem .08rem;
+    /*padding: .06rem .08rem;  */
+    /*padding-top: .03rem;*/
+    padding-bottom: .05rem; /* 去掉padding-top 避免文字不垂直居中 */
+    padding-left: .08rem;
+    padding-right: .08rem;
     outline: none;
     font-family: inherit;
     font-size: inherit;
