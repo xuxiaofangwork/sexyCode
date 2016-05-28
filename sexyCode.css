@@ -439,7 +439,30 @@ textarea {
 
 
 
+
+
+
+
+
+
+
+/* 使用rem input的border设置1px会有一些问题  暂时没找到解决办法  待解决 */
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/**
+ *  slect 样式
+ *  清除ie的默认选择框样式清除，隐藏下拉箭头
+ *  select::-ms-expand { display: none; }
+ *
+ *  将默认的select选择框样式清除
+ *  -moz-appearance:none;
+ *  appearance:none;
+ *  -webkit-appearance:none;
+ */
+
+
+
+
+
 
 
 
@@ -536,6 +559,11 @@ hr {
 }
 
 
+option {
+    font-size: 12px;
+}
+
+
 /*select,*/
 textarea,
 input[type="search"],
@@ -565,7 +593,7 @@ input[type="number"]::-webkit-input-placeholder,
 input[type="search"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
     color: #ccc;
-    font-size: .14rem;
+    font-size: .12rem;
 }
 
 
