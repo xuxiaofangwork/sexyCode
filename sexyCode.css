@@ -524,6 +524,7 @@ p {
     margin: 0;
     padding: .4em;
     line-height: 1.8;
+    word-break: break-all;
 }
 
 strong {
