@@ -499,11 +499,12 @@ body {
     max-width: 640px;
     min-width: 320px;
     margin: 0 auto;    /* 消除body默认的外边距&&让页面居中 */
-    font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;
+    /*font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;*/
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
     font-size: .14rem;
     line-height: 1.5;
     text-align: center;
-    color: #444;
+    color: #333;
 }
 
 img {
@@ -593,8 +594,9 @@ input[type="email"]::-webkit-input-placeholder,
 input[type="number"]::-webkit-input-placeholder,
 input[type="search"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
-    color: #ccc;
+    /*color: #333;*/
     font-size: .12rem;
+    font-family: inherit;
 }
 
 
@@ -731,10 +733,14 @@ select.sexy {
     text-overflow:ellipsis;
 }
 
+/* only support webkit engine */
 .sexy-multiple {
     overflow : hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    display: box;
+    display: -webkit-flex;
+    display: flex;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
