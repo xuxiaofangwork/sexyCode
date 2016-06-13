@@ -492,16 +492,16 @@ html {
     -webkit-user-select:none; /* 禁止ios和android用户选中文字 */
     -webkit-tap-highlight-color: transparent;  /* ios下按钮点击会出现一层颜色,此属性用用于定义那个颜色 */
     -webkit-touch-callout: none; /* 禁止ios长按图片时触发系统保存图片的菜单(还有其他提示,仅适用ios) */
-    font-size: 100px;
+    /*font-size: 100px;*/
 }
 
 body {
-    max-width: 640px;
-    min-width: 320px;
+    /*max-width: 640px;*/
+    /*min-width: 320px;*/
     margin: 0 auto;    /* 消除body默认的外边距&&让页面居中 */
     /*font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;*/
-    font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
-    font-size: .14rem;
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif; /* 俺家设计喜欢雅黑 */
+    /*font-size: .14rem;*/
     line-height: 1.5;
     text-align: center;
     color: #333;
@@ -528,10 +528,10 @@ p {
     word-break: break-all;
 }
 
-strong {
-    font-weight: 500;
+/*strong {
+    font-weight: 600;
     font-size: 1.05em;
-}
+}*/
 
 /**
  * Add the correct background and color in IE 9-.
@@ -540,7 +540,8 @@ strong {
 
 mark {
     padding: .4em;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
     background-color: #ddd;
 }
 
@@ -555,15 +556,16 @@ a:visited {
 }
 
 hr {
-    margin: .6rem 0;
+    margin: 6em 0;
     border: none;
     border-top: 1px solid #333;
 }
 
 
-option {
+/*option {
     font-size: 12px;
-}
+    font-size: inherit;
+}*/
 
 
 /*select,*/
@@ -575,14 +577,15 @@ input[type="number"],
 input[type="text"],
 input[type="password"]
 {   
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: .06rem .08rem;
+    border: 1px solid #000;
+    border-radius: .2em;
+    /*padding: .06rem .08rem; */
+    padding: .43em .58em;
     outline: none;
-    font-family: inherit;
-    font-size: .14rem;
-    line-height: inherit;
-    color: inherit;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*color: inherit;*/
     -webkit-appearance: none; /* 屏蔽ios下输入框阴影&&按钮默认样式 */
 }
 
@@ -595,7 +598,8 @@ input[type="number"]::-webkit-input-placeholder,
 input[type="search"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
     /*color: #333;*/
-    font-size: .12rem;
+    /*font-size: .12rem;*/
+    font-size: inherit;
     font-family: inherit;
 }
 
@@ -616,18 +620,18 @@ button,
 input[type="button"],
 input[type="submit"] {
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: .2em;
     /*padding: .06rem .08rem;  */
     /*padding-top: .03rem;*/
-    padding-bottom: .05rem; /* 去掉padding-top 避免文字不垂直居中 */
-    padding-left: .08rem;
-    padding-right: .08rem;
+    padding-bottom: .36em; /* 去掉padding-top 避免文字不垂直居中 */
+    padding-left: .58em;
+    padding-right: .58em;
     outline: none;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    text-align: inherit;
-    color: inherit;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*text-align: inherit;*/
+    /*color: inherit;*/
     -webkit-appearance: none; /* 屏蔽ios下输入框阴影&&按钮默认样式 */
 }
 
@@ -747,6 +751,26 @@ select.sexy {
 
 
 
+
+
+/* retina screen set fontSize */
+[data-dpr="1"] body {
+    font-size: 14px;
+    max-width: 640px;
+    min-width: 320px;
+}
+
+[data-dpr="2"] body {
+    font-size: 28px;
+    max-width: 1280px;
+    min-width: 640px;
+}
+
+[data-dpr="3"] body {
+    font-size: 42px;
+    max-width: 1920px;
+    min-width: 960px;
+}
 
 
 
