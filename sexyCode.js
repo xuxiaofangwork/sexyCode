@@ -3,7 +3,7 @@
  *  
  *	detail : my private js widget for page;
  *
- *  require : sexyCode.css
+ *  require : sexyCode.css;
  *
  *  date : 2015-12-22 14:57;
  *
@@ -11,7 +11,7 @@
  * 
 */
 
-(function(win,undefined){
+;(function(win,undefined){
 
 	"use strict";
 
@@ -31,33 +31,42 @@
 		return this;	//保持链式调用,返回this对象;
 	};
 
-	// 设置 rem 自动调节
+	// 设置 rem 适应各种屏幕, 根据 dpr 设置跟字体大小;
 	var setRem = function(){
-		var set = function(){
-			var rate = 320/100,
-				html = doc.querySelector('html'),
-				wid = html.getBoundingClientRect().width,
-				iphone = /iphone/ig.test(win.navigator.userAgent),
-				metaStr = "width=device-width,initial-scale=0.5,user-scalable=no";
 
-			wid > 640 && (wid = 640);
-			wid < 320 && (wid = 320);
-			if(iphone) {
-				doc.querySelector('meta[name="viewport"]').content = metaStr;
-				html.style.fontSize = (wid/rate*2) + 'px';
-				doc.body.style.cssText = "max-width:1280px;min-width:640px;";
-			}else{
-				html.style.fontSize = wid/rate + 'px';
-			}			
-		};
+		var rem,
+			timing,
+			viewport = doc.querySelector('meta[name="viewport"]'),
+			dpr = (win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1,
+			html = doc.querySelector('html'),
+			scale = 1 / dpr ,
+			metaStr = 'width=device-width,initial-scale=' + scale + ',user-scalable=no';
 
-		set();
+		if(!!viewport){
+			// viewport.content = metaStr;  考虑兼容性，使用下面setAttribute;
+			viewport.setAttribute('content', metaStr);
+		}else{
+			viewport = doc.createElement('meta');
+			viewport.setAttribute('name', 'viewport');
+			viewport.setAttribute('content', metaStr);
+			doc.head.appendChild(viewport);
+		}
 
-		// 屏幕尺寸重定义 重新设置rem 测试有问题  隐掉  待更新
-		// win.addEventListener('resize', function(){
-		// 	win.clearTimeout(tim);
-		// 	var tim = win.setTimeout(set ,500);
-		// }, false);
+		rem = html.getBoundingClientRect().width / (320 / 100);
+		
+		html.setAttribute('data-dpr', dpr);
+		html.style.fontSize = rem + 'px';
+
+		function refreshRem(){
+			rem = html.getBoundingClientRect().width / (320 / 100);
+			html.setAttribute('data-dpr', dpr);
+			html.style.fontSize = rem + 'px';
+		}
+
+		win.addEventListener('resize', function(){
+			clearTimeout(timing);
+			timing = setTimeout(refreshRem, 400);
+		}, false);
 
 		return  this;
 	};			
@@ -89,12 +98,12 @@
 
 	// 参数为要提示的文本、显示时间; 类型为：字符串、数字;
 	var toast = function(txt, second){
-		if(typeof txt !== 'string') return;
 		var tim,
 			toast,
 			inner,
 			s = second || 3000,
-			str = '<span>' + txt + '</span>',
+			text = txt || '(⊙ｏ⊙)...！',
+			str = '<span>' + text + '</span>',
 			is = doc.querySelector('[sexy-widget="toast"]');
 
 		if(is){
@@ -136,10 +145,12 @@
 	// 对mask有依赖;
 	// 此方法带有回调函数，且是单次绑定，同一页面中有回调函数只能单次使用;
 	var popBox = function(title, content, callback){
-		if(typeof title !== 'string' || typeof content !== 'string') return;
+		// if(typeof title !== 'string' || typeof content !== 'string') return;
 		var popBox,
+			til = title || '小提示',
+			cont = content || '(⊙ｏ⊙)...！',
 			isPoped = doc.querySelector("[sexy-widget='popBox']"),
-			dom =  '<h4 class="sexy-ellipsis">' + title + '</h4><p class="sexy-multiple">' + content + '</p><input type="button" value="确定">';
+			dom =  '<h4 class="sexy-ellipsis">' + til + '</h4><p class="sexy-multiple">' + cont + '</p><input type="button" value="确定">';
 
 		if(isPoped !== null){
 			isPoped.innerHTML = dom;
