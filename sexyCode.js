@@ -52,13 +52,13 @@
 			doc.head.appendChild(viewport);
 		}
 
-		rem = html.getBoundingClientRect().width / (320 / 100);
+		rem = win.getBoundingClientRect(html, null).width / (320 / 100);
 		
 		html.setAttribute('data-dpr', dpr);
 		html.style.fontSize = rem + 'px';
 
 		function refreshRem(){
-			rem = html.getBoundingClientRect().width / (320 / 100);
+			rem = win.getBoundingClientRect(html, null).width / (320 / 100);
 			html.setAttribute('data-dpr', dpr);
 			html.style.fontSize = rem + 'px';
 		}
