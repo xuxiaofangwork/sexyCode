@@ -622,10 +622,7 @@ input[type="submit"] {
     border: 1px solid #ccc;
     border-radius: .2em;
     /*padding: .06rem .08rem;  */
-    /*padding-top: .03rem;*/
-    padding-bottom: .36em; /* 去掉padding-top 避免文字不垂直居中 */
-    padding-left: .58em;
-    padding-right: .58em;
+    padding: .43em .58em;
     outline: none;
     /*font-family: inherit;*/
     /*font-size: inherit;*/
@@ -638,14 +635,16 @@ input[type="submit"] {
 
 select {
     border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: .06rem .08rem;
+    /*border-radius: 3px;*/
+    /*padding: .06rem .08rem;*/
+    border-radius: .2em;
+    padding: .43em .58em;
     outline: none;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    text-align: inherit;
-    color: inherit;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*text-align: inherit;*/
+    /*color: inherit;*/
 }
 
 
@@ -681,8 +680,10 @@ input.sexy-inputShadow[type="number"]:focus,
 input.sexy-inputShadow[type="email"]:focus,
 input.sexy-inputShadow[type="password"]:focus {
     border-color: #3BB4F2;
-    -webkit-box-shadow: 0 0 5px #3BB4F2;
-    box-shadow: 0 0 5px #3BB4F2;
+    /*-webkit-box-shadow: 0 0 5px #3BB4F2;*/
+    /*box-shadow: 0 0 5px #3BB4F2;*/
+    -webkit-box-shadow: 0 0 .36em #3BB4F2;
+    box-shadow: 0 0 .36em #3BB4F2;
 }
 
 /* 重置select样式 */
@@ -691,11 +692,12 @@ select.sexy {
     -moz-appearance:none;
     -webkit-appearance: none;
     /*appearance:none; 浏览器还没有正式支持此属性 需要加前缀 */
-    padding-right: 10px;
+    /*padding-right: 10px;*/
+    padding-right: .72em;
     background: url(data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkI5QzQ3RTkyNEFBMTFFNjlENTBGODdGOEJDOTJEODAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkI5QzQ3RUEyNEFBMTFFNjlENTBGODdGOEJDOTJEODAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGQjlDNDdFNzI0QUExMUU2OUQ1MEY4N0Y4QkM5MkQ4MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGQjlDNDdFODI0QUExMUU2OUQ1MEY4N0Y4QkM5MkQ4MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtmTHzkAAAAtSURBVHjaYtTXd/vPQAAwggh8Ci9e3MXICONgUwhSADcJm0KYAqwAm4kAAQYAcbIPSwmtGbIAAAAASUVORK5CYII=) center right no-repeat;
 }
 
-/* 重置滚动轴 */
+/* 重置滚动轴 此处未对多倍屏幕做适配 */
 .sexy-scroll {
     -webkit-overflow-scrolling: touch;  /* ios滚动回弹 */
 }
@@ -784,17 +786,20 @@ select.sexy {
     position: fixed;
     top: 50%;
     z-index: 101;
-    margin-top: -21px;
+    /*margin-top: -21px;*/
+    margin-top: -1.5em;
 }
 
 [sexy-widget="toast"] span {
     display: table;
-    font-size: 14px;
-    line-height: 1.5;
+    /*font-size: 14px;*/ 
+    /*line-height: 1.5;*/
     background-color: rgba(0,0,0,.75);
     color: #fff;
-    padding: 5px 15px;
-    border-radius: 3px;
+    /*padding: 5px 15px;*/
+    padding: .36em 1.08em;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
     margin: 0 auto;
 }
 
@@ -816,7 +821,8 @@ select.sexy {
     max-width: 420px;
     max-height: 185px;
     width: 85%;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
     text-align: center;
     background-color: #fafafc;
     -webkit-transform: translate(-50%,-50%);
@@ -826,13 +832,16 @@ select.sexy {
 
 [sexy-widget="popBox"] h4 {
     margin: 0;
-    padding: 10px;
-    font-size: 15px;
+    /*padding: 10px;*/
+    /*font-size: 15px;*/
+    padding: .72em;
+    font-size: 1.08em;
 }
 
 [sexy-widget="popBox"] p {
-    padding: 10px;
-    font-size: 14px;
+    /*padding: 10px;*/
+    /*font-size: 14px;*/
+    padding: .72em;
     color: #888;
     word-wrap: break-word;
     word-break: keep-all;
@@ -843,10 +852,22 @@ select.sexy {
     width: 100%;
     background-color: #fafafc;
     color: #0bb20c;
-    font-size: 15px;
-    padding: 8px 0;
+    /*font-size: 15px;*/
+    font-size: 1.08em;
+    /*padding: 8px 0;*/
+    padding: .58em 0;
     border: none;
     border-top: 1px solid #d5d5d6;
+}
+
+[data-dpr="2"] [sexy-widget="popBox"] {
+    max-width: 840px;
+    max-height: 370px;
+}
+
+[data-dpr="3"] [sexy-widget="popBox"] {
+    max-width: 1260px;
+    max-height: 555px;
 }
 
 
