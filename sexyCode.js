@@ -89,6 +89,7 @@
 		};
 
 		SexyBar.prototype = {
+			construct: SexyBar,
 			// get the current transform value
 			getMatrix: function(){
 				var trs = this.hasPro('transform');
@@ -137,6 +138,7 @@
 			start: function(e){
 				e.stopPropagation();
 				var trsi = this.hasPro('transition');
+				// this.viewportTop = this.el.getBoundingClientRect().top;
 				this.startY = e.touches[0].pageY;
 				this.el.style[trsi] = "transform 0s cubic-bezier(0.1, 0.57, 0.1, 1)";
 				// startT = win.Date.now();
@@ -145,13 +147,11 @@
 			// 滑动时执行的函数;
 			move: function(e){
 				e.stopPropagation();
-				if(e.target === this.el){
-					e.preventDefault(); // 如果目标元素是要设置的元素,禁止默认行为;
-					this.disY = e.touches[0].pageY - this.startY;
-					this.startY = e.touches[0].pageY;
-					this.getMatrix();
-					this.scrollTo(this.matY + this.disY);
-				}
+				e.preventDefault(); // h5页面需要加上这句，取消浏览器默认橡皮筋效果; app内可以拿掉(是否去掉无意义,默认冒泡);
+				this.disY = e.touches[0].pageY - this.startY;
+				this.startY = e.touches[0].pageY;
+				this.getMatrix();
+				this.scrollTo(this.matY + this.disY);
 			},
 
 			// 触摸结束时执行的函数;
@@ -162,10 +162,10 @@
 					trsf = this.hasPro('transform'),
 					sty = this.el.style;
 				if(this.matY > 0 || ran < 0){
-					sty[trsi] = "transform .3s cubic-bezier(0.1, 0.57, 0.1, 1)";
+					sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
 					sty[trsf] = 'matrix(1,0,0,1,0,0)';
 				}else if(Math.abs(this.matY) >= (ran + this.viewportTop)){ // 如果移动的值大于差值，不允许移动;
-					sty[trsi] = "transform .3s cubic-bezier(0.1, 0.57, 0.1, 1)";
+					sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
 					sty[trsf] = 'matrix(1,0,0,1,0,' + (-ran-this.viewportTop) + ')';
 				}
 			}
