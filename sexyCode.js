@@ -33,39 +33,48 @@
 
 	// 设置 rem 适应各种屏幕, 根据 dpr 设置跟字体大小;
 	var setRem = function(){
+		var timing,
+			refreshRem = function(){
+				var rem,
+					viewport = doc.querySelector('meta[name="viewport"]'),
+					dpr = win.Math.floor((win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1) || 1,
+					html = doc.querySelector('html'),
+					scale = 1 / dpr ,
+					wid = html.getBoundingClientRect().width,
+					metaStr = 'width=device-width,initial-scale=' + scale + ',user-scalable=no';
 
-		var rem,
-			timing,
-			viewport = doc.querySelector('meta[name="viewport"]'),
-			dpr = (win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1,
-			html = doc.querySelector('html'),
-			scale = 1 / dpr ,
-			metaStr = 'width=device-width,initial-scale=' + scale + ',user-scalable=no';
+				if(!!viewport){
+					// viewport.content = metaStr;  考虑兼容性，使用下面setAttribute;
+					viewport.setAttribute('content', metaStr);
+				}else{
+					viewport = doc.createElement('meta');
+					viewport.setAttribute('name', 'viewport');
+					viewport.setAttribute('content', metaStr);
+					doc.head.appendChild(viewport);
+				}
 
-		if(!!viewport){
-			// viewport.content = metaStr;  考虑兼容性，使用下面setAttribute;
-			viewport.setAttribute('content', metaStr);
-		}else{
-			viewport = doc.createElement('meta');
-			viewport.setAttribute('name', 'viewport');
-			viewport.setAttribute('content', metaStr);
-			doc.head.appendChild(viewport);
-		}
+				// plus 下2倍是否可行，需要测试，若可行，可以拿掉三倍方案;
+				switch(dpr) {
+					case 1:
+						rem = wid > 640 ? 640/(320/100) : wid/(320/100);
+						break;
+					case 2:
+						rem = wid > 1280 ? 1280/(320/100) : wid/(320/100);
+						break;
+					case 3:
+						rem = wid > 1920 ? 1920/(320/100) : wid/(320/100);
+						break;
+				}
+				
+				html.setAttribute('data-dpr', dpr);
+				html.style.fontSize = rem + 'px';
+			};
 
-		rem = html.getBoundingClientRect().width / (320 / 100);
-		
-		html.setAttribute('data-dpr', dpr);
-		html.style.fontSize = rem + 'px';
-
-		function refreshRem(){
-			rem = html.getBoundingClientRect().width / (320 / 100);
-			html.setAttribute('data-dpr', dpr);
-			html.style.fontSize = rem + 'px';
-		}
+		refreshRem();
 
 		win.addEventListener('resize', function(){
-			clearTimeout(timing);
-			timing = setTimeout(refreshRem, 400);
+			win.clearTimeout(timing);
+			timing = win.setTimeout(refreshRem, 400);
 		}, false);
 
 		return  this;
@@ -89,7 +98,7 @@
 		};
 
 		SexyBar.prototype = {
-			construct: SexyBar,
+			constructor: SexyBar,
 			// get the current transform value
 			getMatrix: function(){
 				var trs = this.hasPro('transform');
@@ -291,7 +300,6 @@
 
 
 	return win.sexy = win.Object.freeze(obj);
-
 })(window);
 
 
