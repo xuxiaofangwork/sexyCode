@@ -1,0 +1,889 @@
+/*
+ *  name : sexyCode.css;
+ *  
+ *  detail : my base css for page, slot normalize.css;
+ *
+ *  require : no;
+ *
+ *  date : 2016-05-20 14:14;
+ *
+ *  author : HaoXiaodan(xuxiaofangwork@163.com);
+ * 
+*/
+
+@charset "utf-8";
+
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+
+/* text-size-adjust 此属性已废弃 谷歌和火狐最新版都不支持此属性 */
+/*html {
+    font-family: sans-serif; 
+    -ms-text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%; 
+}*/
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+/*body {
+    margin: 0;
+}*/
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+
+article,
+aside,
+details, /* 1 */
+figcaption,
+figure,
+footer,
+header,
+main, /* 2 */
+menu,
+nav,
+section,
+summary { /* 1 */
+    display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+    vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+
+template, /* 1 */
+[hidden] {
+    display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+    background-color: transparent; /* 1 */
+    -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+    outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+    border-bottom: none; /* 1 */
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+    font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ * 将mark底色做了下修改,ff0修改为d6dbdf;
+ */
+
+/*mark {
+    border-radius: .4em; 
+    background-color: #D6DBDF;
+    color: inherit;
+}*/
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+/*img {
+    border-style: none;
+}*/
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+    margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+select,
+textarea {
+    font: inherit; /* 1 */
+    margin: 0; /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+
+optgroup {
+    font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+    overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+    text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+    overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+
+::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 使用rem input的border设置1px会有一些问题  暂时没找到解决办法  待解决 */
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/**
+ *  slect 样式
+ *  清除ie的默认选择框样式清除，隐藏下拉箭头
+ *  select::-ms-expand { display: none; }
+ *
+ *  将默认的select选择框样式清除
+ *  -moz-appearance:none;
+ *  appearance:none;
+ *  -webkit-appearance:none;
+ */
+
+
+
+
+
+
+
+
+
+
+
+/* my custom css style start */
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+         -o-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+         -o-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html {
+    -ms-touch-action: none;  /* 阻止windows Phone 的默认触摸事件 */
+    -webkit-user-select:none; /* 禁止ios和android用户选中文字 */
+    -webkit-tap-highlight-color: transparent;  /* ios下按钮点击会出现一层颜色,此属性用用于定义那个颜色 */
+    -webkit-touch-callout: none; /* 禁止ios长按图片时触发系统保存图片的菜单(还有其他提示,仅适用ios) */
+    /*font-size: 100px;*/
+}
+
+body {
+    /*max-width: 640px;*/
+    /*min-width: 320px;*/
+    margin: 0 auto;    /* 消除body默认的外边距&&让页面居中 */
+    /*font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;*/
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif; /* 俺家设计喜欢雅黑 */
+    /*font-size: .14rem;*/
+    line-height: 1.5;
+    text-align: center;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-style: none; /* Remove the border on images inside links in IE 10- */
+    vertical-align: middle;  /* 设置图片相对父元素基线居中 */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { font-weight: 500; }
+
+p {
+    margin: 0;
+    padding: .4em;
+    line-height: 1.8;
+    word-break: break-all;
+}
+
+/*strong {
+    font-weight: 600;
+    font-size: 1.05em;
+}*/
+
+/**
+ * Add the correct background and color in IE 9-.
+ * 将mark底色做了下修改,ff0修改为d6dbdf;
+ */
+
+mark {
+    padding: .4em;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
+    background-color: #ddd;
+}
+
+a:link {
+    color: #08c;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #08c;
+    text-decoration: underline;
+}
+
+hr {
+    margin: 6em 0;
+    border: none;
+    border-top: 1px solid #333;
+}
+
+
+/*option {
+    font-size: 12px;
+    font-size: inherit;
+}*/
+
+
+/*select,*/
+textarea,
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="text"],
+input[type="password"]
+{   
+    border: 1px solid #000;
+    border-radius: .2em;
+    /*padding: .06rem .08rem; */
+    padding: .43em .58em;
+    outline: none;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*color: inherit;*/
+    -webkit-appearance: none; /* 屏蔽ios下输入框阴影&&按钮默认样式 */
+}
+
+
+textarea::-webkit-input-placeholder,
+input[type="url"]::-webkit-input-placeholder,
+input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+input[type="number"]::-webkit-input-placeholder,
+input[type="search"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder {
+    /*color: #333;*/
+    /*font-size: .12rem;*/
+    font-size: inherit;
+    font-family: inherit;
+}
+
+
+textarea:focus::-webkit-input-placeholder,
+input[type="url"]:focus::-webkit-input-placeholder,
+input[type="text"]:focus::-webkit-input-placeholder,
+input[type="email"]:focus::-webkit-input-placeholder,
+input[type="search"]:focus::-webkit-input-placeholder,
+input[type="number"]:focus::-webkit-input-placeholder,
+input[type="password"]:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+
+
+button,
+input[type="button"],
+input[type="submit"] {
+    border: 1px solid #ccc;
+    border-radius: .2em;
+    /*padding: .06rem .08rem;  */
+    padding: .43em .58em;
+    outline: none;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*text-align: inherit;*/
+    /*color: inherit;*/
+    -webkit-appearance: none; /* 屏蔽ios下输入框阴影&&按钮默认样式 */
+}
+
+
+select {
+    border: 1px solid #ccc;
+    /*border-radius: 3px;*/
+    /*padding: .06rem .08rem;*/
+    border-radius: .2em;
+    padding: .43em .58em;
+    outline: none;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    /*line-height: inherit;*/
+    /*text-align: inherit;*/
+    /*color: inherit;*/
+}
+
+
+input[disabled],
+select[disabled],
+button[disabled],
+textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #ddd;
+    color: rgba(0, 0, 0, .3);
+}
+/* my custom css style end */
+
+
+
+
+
+
+
+
+
+
+
+/* often use style */
+
+/* 添加表单元素焦点阴影 */
+select.sexy-inputShadow:focus,
+textarea.sexy-inputShadow:focus,
+input.sexy-inputShadow[type="url"]:focus,
+input.sexy-inputShadow[type="text"]:focus,
+input.sexy-inputShadow[type="search"]:focus,
+input.sexy-inputShadow[type="number"]:focus,
+input.sexy-inputShadow[type="email"]:focus,
+input.sexy-inputShadow[type="password"]:focus {
+    border-color: #3BB4F2;
+    /*-webkit-box-shadow: 0 0 5px #3BB4F2;*/
+    /*box-shadow: 0 0 5px #3BB4F2;*/
+    -webkit-box-shadow: 0 0 .36em #3BB4F2;
+    box-shadow: 0 0 .36em #3BB4F2;
+}
+
+/* 重置select样式 */
+select.sexy::-ms-expand { display: none; }
+select.sexy {
+    -moz-appearance:none;
+    -webkit-appearance: none;
+    /*appearance:none; 浏览器还没有正式支持此属性 需要加前缀 */
+    /*padding-right: 10px;*/
+    padding-right: .72em;
+    background: url(data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkI5QzQ3RTkyNEFBMTFFNjlENTBGODdGOEJDOTJEODAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkI5QzQ3RUEyNEFBMTFFNjlENTBGODdGOEJDOTJEODAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGQjlDNDdFNzI0QUExMUU2OUQ1MEY4N0Y4QkM5MkQ4MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGQjlDNDdFODI0QUExMUU2OUQ1MEY4N0Y4QkM5MkQ4MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtmTHzkAAAAtSURBVHjaYtTXd/vPQAAwggh8Ci9e3MXICONgUwhSADcJm0KYAqwAm4kAAQYAcbIPSwmtGbIAAAAASUVORK5CYII=) center right no-repeat;
+}
+
+/* 重置滚动轴 此处未对多倍屏幕做适配 */
+.sexy-scroll {
+    -webkit-overflow-scrolling: touch;  /* ios滚动回弹 */
+}
+
+.sexy-scroll::-webkit-scrollbar { /* 设置滚动轴整体样式 */
+    width: 3px;
+    height: 100%;
+}
+
+.sexy-scroll::-webkit-scrollbar-thumb { /* 设置滚动轴滑块样式 */
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+    box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,.3);
+    border-radius: 2px;
+}
+
+/* 清除浮动 */
+.sexy-clearfix:after {
+    content: ""; 
+    display: table; /* 触发block formatting context(BFC) */
+    clear: both;
+}
+
+/* 防止margin重叠 */
+.sexy-preventMg:before {
+    content: "";
+    display: table; /* 触发block formatting context(BFC) */
+}
+
+.sexy-grid {
+    display: table;
+    width: 100%;
+}
+
+/* text overflow ellipsis */
+.sexy-ellipsis {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* only support webkit engine */
+.sexy-multiple {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+/* retina screen set fontSize */
+[data-dpr="1"] body {
+    font-size: 14px;
+    max-width: 640px;
+    min-width: 320px;
+}
+
+[data-dpr="2"] body {
+    font-size: 28px;
+    max-width: 1280px;
+    min-width: 640px;
+}
+
+[data-dpr="3"] body {
+    font-size: 42px;
+    max-width: 1920px;
+    min-width: 960px;
+}
+
+
+
+
+
+
+/* sexyCode.js widget style start */
+[sexy-widget="toast"] {
+    display: table;
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    z-index: 101;
+    /*margin-top: -21px;*/
+    margin-top: -1.5em;
+}
+
+[sexy-widget="toast"] span {
+    display: table;
+    /*font-size: 14px;*/ 
+    /*line-height: 1.5;*/
+    background-color: rgba(0,0,0,.75);
+    color: #fff;
+    /*padding: 5px 15px;*/
+    padding: .36em 1.08em;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
+    margin: 0 auto;
+}
+
+[sexy-widget="mask"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,.75);
+}
+
+[sexy-widget="popBox"] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 102;
+    max-width: 420px;
+    max-height: 185px;
+    width: 85%;
+    /*border-radius: 3px;*/
+    border-radius: .2em;
+    text-align: center;
+    background-color: #fafafc;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%)
+}
+
+[sexy-widget="popBox"] h4 {
+    margin: 0;
+    /*padding: 10px;*/
+    /*font-size: 15px;*/
+    padding: .72em;
+    font-size: 1.08em;
+}
+
+[sexy-widget="popBox"] p {
+    /*padding: 10px;*/
+    /*font-size: 14px;*/
+    padding: .72em;
+    color: #888;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+[sexy-widget="popBox"] input {
+    cursor: pointer;
+    width: 100%;
+    background-color: #fafafc;
+    color: #0bb20c;
+    /*font-size: 15px;*/
+    font-size: 1.08em;
+    /*padding: 8px 0;*/
+    padding: .58em 0;
+    border: none;
+    border-top: 1px solid #d5d5d6;
+}
+
+[data-dpr="2"] [sexy-widget="popBox"] {
+    max-width: 840px;
+    max-height: 370px;
+}
+
+[data-dpr="3"] [sexy-widget="popBox"] {
+    max-width: 1260px;
+    max-height: 555px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
