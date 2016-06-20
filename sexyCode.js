@@ -36,12 +36,12 @@
 		var timing,
 			refreshRem = function(){
 				var rem,
+					wid,
 					fontSize,
 					viewport = doc.querySelector('meta[name="viewport"]'),
 					dpr = win.Math.floor((win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1) || 1,
 					html = doc.querySelector('html'),
-					scale = 1 / dpr ,
-					wid = html.getBoundingClientRect().width,
+					scale = 1 / dpr,
 					metaStr = 'width=device-width,initial-scale=' + scale + ',user-scalable=no';
 
 				if(!!viewport){
@@ -53,6 +53,8 @@
 					viewport.setAttribute('content', metaStr);
 					doc.head.appendChild(viewport);
 				};
+
+				wid = html.getBoundingClientRect().width;
 
 				// plus 下2倍是否可行，需要测试，若可行，可以拿掉三倍方案;
 				switch(dpr) {

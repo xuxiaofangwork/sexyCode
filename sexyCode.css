@@ -498,7 +498,7 @@ html {
 body {
     /*max-width: 640px;*/
     /*min-width: 320px;*/
-    margin: 0 auto;    /* 消除body默认的外边距&&让页面居中 */
+    /*margin: 0 auto;     消除body默认的外边距&&让页面居中 */
     /*font-family: "Helvetica Neue", verdana, Helvetica, Arial, "Microsoft YaHei",sans-serif;*/
     font-family: "Microsoft YaHei", "微软雅黑", sans-serif; /* 俺家设计喜欢雅黑 */
     /*font-size: .14rem;*/
@@ -577,7 +577,7 @@ input[type="number"],
 input[type="text"],
 input[type="password"]
 {   
-    border: 1px solid #000;
+    border: 1px solid #ccc;
     border-radius: .2em;
     /*padding: .06rem .08rem; */
     padding: .43em .58em;
@@ -756,23 +756,31 @@ select.sexy {
 
 
 /* retina screen set fontSize 字体使用了JS计算 */
-[data-dpr="1"] body {
+[data-dpr="1"] body,
+[data-dpr="1"] .sexy-fixed {
     /*font-size: 12px;*/
     max-width: 640px;
     min-width: 320px;
+    margin: 0 auto;
 }
 
-[data-dpr="2"] body {
+[data-dpr="2"] body,
+[data-dpr="2"] .sexy-fixed {
     /*font-size: 24px;*/
     max-width: 1280px;
     min-width: 640px;
+    margin: 0 auto;
 }
 
-[data-dpr="3"] body {
+[data-dpr="3"] body,
+[data-dpr="3"] .sexy-fixed {
     /*font-size: 36px;*/
     max-width: 1920px;
     min-width: 960px;
+    margin: 0 auto;
 }
+
+
 
 
 
