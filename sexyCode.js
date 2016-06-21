@@ -32,6 +32,8 @@
 	};
 
 	// 设置 rem 适应各种屏幕, 根据 dpr 设置跟字体大小;
+	// 采用rem响应式布局时，当设置viewport缩放时（测试缩放小于1），标签内的文档达到一定长度时，文本字体大小会失控，
+	// 不会按照继承字体大小的缩放正常比例显示，会偏大；解决方法： 将标签设置为position:absolute；
 	var setRem = function(){
 		var timing,
 			refreshRem = function(){
