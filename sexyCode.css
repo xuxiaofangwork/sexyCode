@@ -743,10 +743,10 @@ select.sexy {
 .sexy-multiple {
     overflow : hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    display: box;
     display: -webkit-flex;
     display: flex;
+    display: -webkit-box;  /* 如果没有此属性 多行省略会失效 会有兼容问题 */
+    display: box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
