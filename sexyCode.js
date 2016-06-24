@@ -40,11 +40,11 @@
 				var rem,
 					wid,
 					fontSize,
+					html = doc.querySelector('html'),
 					viewport = doc.querySelector('meta[name="viewport"]'),
 					dpr = win.Math.floor((win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1) || 1,
-					html = doc.querySelector('html'),
-					scale = 1 / dpr,
-					metaStr = 'width=device-width,initial-scale=' + scale + ',user-scalable=no';
+					// scale = 1 / dpr, // 持续优化淘汰了此变量;
+					metaStr = 'width=device-width,initial-scale=' + 1 / dpr + ',user-scalable=no';
 
 				if(!!viewport){
 					// viewport.content = metaStr;  考虑兼容性，使用下面setAttribute;
@@ -58,7 +58,8 @@
 
 				wid = html.getBoundingClientRect().width;
 
-				// plus 下2倍是否可行，需要测试，若可行，可以拿掉三倍方案;
+				// rem在1倍屏标准宽度取320标准字体大小为100px，根据屏幕大小根据标准比例计算rem大小，最大宽度为640;
+				// fontSize在1倍屏标准宽度320下为12px，最大宽度640下为16px;
 				switch(dpr) {
 					case 1:
 						rem = wid > 640 ? 640/(320/100) : wid/(320/100);
@@ -79,12 +80,19 @@
 				doc.body.style.fontSize = fontSize + 'px';
 			};
 
-		refreshRem();
-
-		win.addEventListener('resize', function(){
-			win.clearTimeout(timing);
-			timing = win.setTimeout(refreshRem, 400);
-		}, false);
+		if(doc.readyState === "interactive" || doc.readyState === "complete"){
+			refreshRem();
+		}else{
+			doc.addEventListener('DOMContentLoaded', function(){
+				refreshRem();
+			});
+		}
+		
+		// 火狐手机端滚动条滚动会触发resize事件;使用需拿掉此事件;
+		// win.addEventListener('resize', function(){
+		// 	win.clearTimeout(timing);
+		// 	timing = win.setTimeout(refreshRem, 400);
+		// }, false);
 
 		return  this;
 	};
