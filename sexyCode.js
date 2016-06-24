@@ -56,6 +56,7 @@
 					doc.head.appendChild(viewport);
 				};
 
+				// after set viewport get the width;
 				wid = html.getBoundingClientRect().width;
 
 				// rem在1倍屏标准宽度取320标准字体大小为100px，根据屏幕大小根据标准比例计算rem大小，最大宽度为640;
@@ -88,7 +89,7 @@
 			});
 		}
 		
-		// 火狐手机端滚动条滚动会触发resize事件;使用需拿掉此事件;
+		// 火狐手机端滚动条滚动会触发resize事件;使用需拿掉此事件;如果模拟滚动轴可以使用此事件;
 		// win.addEventListener('resize', function(){
 		// 	win.clearTimeout(timing);
 		// 	timing = win.setTimeout(refreshRem, 400);
