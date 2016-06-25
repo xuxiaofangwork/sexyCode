@@ -74,6 +74,10 @@
 						rem = wid > 1920 ? 1920/(320/100) : wid/(320/100);
 						fontSize = (wid-960)/(960/(48-36)) + 36 > 48 ? 48 : (wid-960)/(960/(48-36)) + 36;
 						break;
+					default: // 默认一倍屏处理;
+						rem = wid > 640 ? 640/(320/100) : wid/(320/100);
+						fontSize = (wid-320)/(320/(16-12)) + 12 > 16 ? 16 : (wid-320)/(320/(16-12)) + 12;
+						break;
 				}
 				
 				html.setAttribute('data-dpr', dpr);
@@ -101,102 +105,105 @@
 	var scroll = (function(){
 		var SexyBar = function(el){
 
-			var bar = this;
-
 			this.el = doc.querySelector(el);
 			this.parent = this.el.parentNode;
-			this.startY = 0;
-			this.disY = 0;		
+			this.startX = 0;	// begin X location
+			this.startY = 0;	// begin Y location
+			this.disY = 0;		// move distance Y
 			this.matY = 0;		// transform 的当前值
-			this.viewportTop = this.el.getBoundingClientRect().top;
-			this.parent.style.overflowY = "hidden";
-			this.el.addEventListener('touchstart', function(e){bar.start.call(bar,e)}, false);
-			this.el.addEventListener('touchmove', function(e){bar.move.call(bar,e)}, false);
-			this.el.addEventListener('touchend', function(e){bar.end.call(bar,e)}, false);
-		};
+			this.disX = 0;		// move distance X
 
-		SexyBar.prototype = {
-			constructor: SexyBar,
-			// get the current transform value
-			getMatrix: function(){
-				var trs = this.hasPro('transform');
-				var str = this.el.style[trs];
-				if(str === ""){
-					this.matY = 0;
-				}else{
-					this.matY = +(str.match(/-?\d+/g)[5]);
-				}
-			},
+			var bar = this,
+				methods = {
+					// get the current transform value
+					getMatrix: function(){
+						var trs = methods.hasPro('transform');
+						var str = bar.el.style[trs];
+						if(str === ""){
+							bar.matY = 0;
+						}else{
+							bar.matY = +(str.match(/-?\d+/g)[5]);
+						}
+					},
 
-			// judge css property isn`t support;
-			hasPro: function(pro){
-				var elStyle = document.createElement('div').style,
-					vendors = ['webkit', 'Moz', 'ms', 'O'],
-				    is = pro in elStyle,
-				    privatePro,
-					i = 0,
-					l = vendors.length;
+					// judge prefix property;
+					hasPro: function(pro){
+						var elStyle = document.createElement('div').style,
+							vendors = ['webkit', 'Moz', 'ms', 'O'],
+						    is = pro in elStyle,
+						    privatePro,
+							i = 0,
+							l = vendors.length;
 
-				if(!is){
-					for ( ; i < l; i++ ) {
-						privatePro = vendors[i] + pro.replace(/.?/i, pro[0].toUpperCase());
-						if ( privatePro in elStyle ) return privatePro;
+						if(!is){
+							for ( ; i < l; i++ ) {
+								privatePro = vendors[i] + pro.replace(/.?/i, pro[0].toUpperCase());
+								if ( privatePro in elStyle ) return privatePro;
+							}
+							return false;
+						}
+
+						return pro;
+					},
+
+					range: function(){
+						var elHeight = win.parseFloat(win.getComputedStyle(bar.el,null).height),
+							parentHeight = win.parseFloat(win.getComputedStyle(bar.parent,null).height);
+						return elHeight - parentHeight; // return distance of this element & parent element;
+					},
+
+					// scroll a location;
+					scrollTo: function(dis){
+						var trsf = methods.hasPro('transform');
+						bar.el.style[trsf] = 'matrix(1,0,0,1,0,' + dis + ')';
+					},
+
+					// 点击时执行的函数;
+					start: function(e){
+						e.stopPropagation();
+						var trsi = methods.hasPro('transition');
+						bar.startY = e.touches[0].pageY;
+						bar.startX = e.touches[0].pageX;
+						bar.el.style[trsi] = "transform 0s cubic-bezier(0.1, 0.57, 0.1, 1)";
+						bar.el.addEventListener('touchmove', methods.move); // addEventListener 默认冒泡触发,若第三个参数为false,可省略;
+						bar.el.addEventListener('touchend', methods.end);
+					},
+
+					// 滑动时执行的函数;
+					move: function(e){
+						e.stopPropagation();
+						bar.disX = e.touches[0].pageX - bar.startX;
+						bar.disY = e.touches[0].pageY - bar.startY; 
+						bar.startX = e.touches[0].pageX;
+						bar.startY = e.touches[0].pageY;
+						if(Math.abs(bar.disY) > Math.abs(bar.disX)){
+							methods.getMatrix();
+							methods.scrollTo(bar.matY + bar.disY);
+						}
+					},
+
+					// 触摸结束时执行的函数;
+					end: function(e){
+						e.stopPropagation();
+						var ran = methods.range(), 
+							trsi = methods.hasPro('transition'),
+							trsf = methods.hasPro('transform'),
+							sty = bar.el.style;
+						if(bar.matY > 0 || ran < 0){
+							sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
+							sty[trsf] = 'matrix(1,0,0,1,0,0)';
+						}else if(Math.abs(bar.matY) >= ran){ // 如果移动的值大于差值，不允许移动;(ran + this.viewportTop)
+							sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
+							sty[trsf] = 'matrix(1,0,0,1,0,' + (-ran) + ')'; //-this.viewportTop
+						}
+
+						bar.el.removeEventListener('touchmove', methods.move);
+						bar.el.removeEventListener('touchend', methods.end);
 					}
-					return false;
-				}
+				};
 
-				return pro;
-			},
-
-			// 获取元素滚动范围 根据元素与父元素高度的差值计算
-			moveRange: function(){
-				var elHeight = win.parseFloat(win.getComputedStyle(this.el,null).height),
-					parentHeight = win.parseFloat(win.getComputedStyle(this.parent,null).height);
-				return elHeight - parentHeight; // 返回元素与父元素的差值
-			},
-
-			// 移动到一个位置;
-			scrollTo: function(distance){
-				var trsf = this.hasPro('transform');
-				this.el.style[trsf] = 'matrix(1,0,0,1,0,' + distance + ')';
-			},
-
-			// 点击时执行的函数;
-			start: function(e){
-				e.stopPropagation();
-				var trsi = this.hasPro('transition');
-				// this.viewportTop = this.el.getBoundingClientRect().top;
-				this.startY = e.touches[0].pageY;
-				this.el.style[trsi] = "transform 0s cubic-bezier(0.1, 0.57, 0.1, 1)";
-				// startT = win.Date.now();
-			},
-
-			// 滑动时执行的函数;
-			move: function(e){
-				e.stopPropagation();
-				e.preventDefault(); // h5页面需要加上这句，取消浏览器默认橡皮筋效果; app内可以拿掉(是否去掉无意义,默认冒泡);
-				this.disY = e.touches[0].pageY - this.startY;
-				this.startY = e.touches[0].pageY;
-				this.getMatrix();
-				this.scrollTo(this.matY + this.disY);
-			},
-
-			// 触摸结束时执行的函数;
-			end: function(e){
-				e.stopPropagation();
-				var ran = this.moveRange(),
-					trsi = this.hasPro('transition'),
-					trsf = this.hasPro('transform'),
-					sty = this.el.style;
-				if(this.matY > 0 || ran < 0){
-					sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
-					sty[trsf] = 'matrix(1,0,0,1,0,0)';
-				}else if(Math.abs(this.matY) >= (ran + this.viewportTop)){ // 如果移动的值大于差值，不允许移动;
-					sty[trsi] = "transform .6s cubic-bezier(0.1, 0.57, 0.1, 1)";
-					sty[trsf] = 'matrix(1,0,0,1,0,' + (-ran-this.viewportTop) + ')';
-				}
-			}
-		};
+			this.el.addEventListener('touchstart', methods.start);
+		}
 
 		return SexyBar;
 	})();
