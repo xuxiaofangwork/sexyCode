@@ -78,7 +78,7 @@
 				
 				html.setAttribute('data-dpr', dpr);
 				html.style.fontSize = rem + 'px';
-				doc.body.style.fontSize = fontSize + 'px';
+				doc.body.style.fontSize = Math.floor(fontSize) + 'px';
 			};
 
 		if(doc.readyState === "interactive" || doc.readyState === "complete"){
