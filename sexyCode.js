@@ -42,7 +42,8 @@
 					fontSize,
 					html = doc.querySelector('html'),
 					viewport = doc.querySelector('meta[name="viewport"]'),
-					dpr = win.Math.floor((win.devicePixelRatio || 1) > 3 ? 3 : win.devicePixelRatio || 1) || 1,
+					//  图片太大, 加载过慢, 取消了三倍方案  2和3统一用2的方案，其余用1的方案;
+					dpr = win.Math.floor(win.devicePixelRatio || 1) > 2 ? 2 : win.Math.floor(win.devicePixelRatio || 1),
 					// scale = 1 / dpr, // 持续优化淘汰了此变量;
 					metaStr = 'width=device-width,initial-scale=' + 1 / dpr + ',user-scalable=no';
 
@@ -70,10 +71,11 @@
 						rem = wid > 1280 ? 1280/(320/100) : wid/(320/100);
 						fontSize = (wid-640)/(640/(32-24)) + 24 > 32 ? 32 : (wid-640)/(640/(32-24)) + 24;
 						break;
-					case 3:
-						rem = wid > 1920 ? 1920/(320/100) : wid/(320/100);
-						fontSize = (wid-960)/(960/(48-36)) + 36 > 48 ? 48 : (wid-960)/(960/(48-36)) + 36;
-						break;
+					// 取消三倍方案;
+					// case 3:
+					// 	rem = wid > 1920 ? 1920/(320/100) : wid/(320/100);
+					// 	fontSize = (wid-960)/(960/(48-36)) + 36 > 48 ? 48 : (wid-960)/(960/(48-36)) + 36;
+					// 	break;
 					default: // 默认一倍屏处理;
 						rem = wid > 640 ? 640/(320/100) : wid/(320/100);
 						fontSize = (wid-320)/(320/(16-12)) + 12 > 16 ? 16 : (wid-320)/(320/(16-12)) + 12;
@@ -172,6 +174,7 @@
 					// 滑动时执行的函数;
 					move: function(e){
 						e.stopPropagation();
+						e.preventDefault();		// 清除浏览器头尾隐藏显示;
 						bar.disX = e.touches[0].pageX - bar.startX;
 						bar.disY = e.touches[0].pageY - bar.startY; 
 						bar.startX = e.touches[0].pageX;
