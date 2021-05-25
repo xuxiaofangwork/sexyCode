@@ -690,6 +690,16 @@ select {
     text-overflow:ellipsis;
 }
 
+/* text overflow ellipsis for multiple line */
+.sx-mult-ellipsis {
+    display: -webkit-box !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 /* form element focus style */
 .sx-focus:focus {
 	border-color: #3BB4F2;
